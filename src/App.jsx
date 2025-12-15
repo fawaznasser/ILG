@@ -617,10 +617,10 @@ function PracticeSection({ copy }) {
             <article key={card.title} className="practice-card">
               <div className="practice-image">
                 <span className="practice-chip">{card.title}</span>
+                <button type="button" className="practice-arrow" aria-label={`Learn more about ${card.title}`}>
+                  <IconArrowRight />
+                </button>
               </div>
-              <button type="button" className="practice-arrow" aria-label={`Learn more about ${card.title}`}>
-                <IconArrowRight />
-              </button>
             </article>
           ))}
         </div>

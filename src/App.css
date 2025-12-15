@@ -897,7 +897,7 @@ main {
   border-radius: 50%;
   border: none;
   background: #ffffff;
-  color: var(--text-heading);
+  color: var(--accent);
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -905,10 +905,19 @@ main {
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
+.practice-arrow svg {
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
 .practice-arrow:hover {
   background: var(--accent);
   color: #ffffff;
   transform: translateX(2px);
+}
+
+.practice-arrow:hover svg {
+  transform: rotate(45deg) translateX(0);
 }
 
 .section-team {
@@ -1096,9 +1105,9 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2.4rem;
+  gap: 2rem;
   margin-bottom: 2.2rem;
-  padding: 0;
+  padding: 0 0.5rem;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -1115,7 +1124,7 @@ main {
   text-transform: uppercase;
   font-weight: 600;
   color: var(--text-heading);
-  padding: 0.2rem 0;
+  padding: 0.35rem 0;
   position: relative;
   cursor: pointer;
   transition: color 0.2s ease;
@@ -1319,12 +1328,14 @@ main {
 
 .faq-grid {
   width: 100%;
+  direction: inherit;
 }
 
 .faq-item {
   background-color: #ffffff;
   border-radius: 0;
   border-bottom: 1px solid #e7e7e7;
+  text-align: inherit;
 }
 
 .faq-item:last-child {
@@ -1343,12 +1354,14 @@ main {
   cursor: pointer;
   text-align: left;
   color: var(--text-heading);
+  direction: inherit;
 }
 
 .faq-question {
   font-size: 1.02rem;
   font-weight: 700;
   line-height: 1.35;
+  text-align: inherit;
 }
 
 .faq-icon {
@@ -1380,6 +1393,7 @@ main {
   color: #9aa0a6;
   font-size: 0.92rem;
   line-height: 1.55;
+  text-align: inherit;
 }
 
 .faq-answer p {
@@ -1708,12 +1722,31 @@ main {
 [dir="rtl"] .team-highlight-copy,
 [dir="rtl"] .news-card,
 [dir="rtl"] .faq-item,
+[dir="rtl"] .faq-items,
+[dir="rtl"] .faq-grid,
+[dir="rtl"] .faq-grid,
+[dir="rtl"] .faq-answer,
+[dir="rtl"] .faq-question,
+[dir="rtl"] .section-header-center,
 [dir="rtl"] .careers-form,
 [dir="rtl"] .careers-consent,
 [dir="rtl"] .careers-note,
 [dir="rtl"] .footer-card,
 [dir="rtl"] .footer-links,
 [dir="rtl"] .footer-address-lines {
+  text-align: right;
+}
+
+[dir="rtl"] .faq-items,
+[dir="rtl"] .faq-grid,
+[dir="rtl"] .faq-item {
+  direction: rtl;
+}
+
+[dir="rtl"] .faq-trigger {
+  direction: rtl;
+  flex-direction: row;
+  justify-content: space-between;
   text-align: right;
 }
 
@@ -1923,9 +1956,8 @@ main {
   }
 
   .hero-row {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: none;
-    grid-template-areas: none;
+    flex-direction: column;
+    align-items: center;
     gap: 1.2rem;
   }
 
@@ -1946,6 +1978,7 @@ main {
     align-items: center;
     transform: none;
     max-width: 100%;
+    width: 100%;
   }
 
   .hero-stat-card {
@@ -1982,19 +2015,27 @@ main {
 
   .multisector-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 1.8rem;
+    gap: 1.2rem;
     position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .multisector-images {
     position: static;
     width: 100%;
+    display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
   }
 
   .multisector-image-1,
   .multisector-image-2 {
-    height: 14rem;
+    height: 12rem;
+    width: 100%;
   }
 
   .practice-grid,
@@ -2015,6 +2056,17 @@ main {
     align-items: flex-start;
   }
 
+  .insight-tabs {
+    justify-content: flex-start;
+    gap: 1.2rem;
+    padding: 0 0.25rem;
+  }
+
+  .insight-tab {
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
+  }
+
   .team-members {
     gap: 1.2rem;
   }
@@ -2026,6 +2078,16 @@ main {
   }
 
   .team-member-card {
+    width: 100%;
+  }
+
+  .team-highlight {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .team-highlight-photo,
+  .team-highlight-copy {
     width: 100%;
   }
 
@@ -2084,14 +2146,16 @@ main {
   }
 
   .hero-row {
+    flex-direction: column;
+    align-items: center;
     gap: 1.1rem;
   }
 
   .hero-media {
     min-height: 9.375rem;
-    width: 50%;
-    max-width: 32.5rem;
-    min-width: 15rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     margin-inline: auto;
   }
 
